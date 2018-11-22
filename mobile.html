@@ -18,16 +18,34 @@
   
 </head>
 <body>
+  <script>
+  	function getParameterByName(name, url) {
+    	if (!url) url = window.location.href;
+    	name = name.replace(/[\[\]]/g, '\\$&');
+    	var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        	results = regex.exec(url);
+    	if (!results) return null;
+    	if (!results[2]) return '';
+    	return decodeURIComponent(results[2].replace(/\+/g, ' '));
+	  }
+  </script>
   <!-- Render the login widget here -->
   <div id="okta-login-container"></div>
 
   <!-- Script to init the widget -->
   <script>
     var orgUrl = 'https://t-mobile.oktapreview.com';
-var oktaSignIn = new OktaSignIn({baseUrl: orgUrl});
+    var redirURI = getParameterByName('RelayState');
+    if (!redirURI){ redirURI=orgUrl;}
+
+    var oktaSignIn = new OktaSignIn({baseUrl: orgUrl});
     oktaSignIn.renderEl(
       { el: '#okta-login-container' },
-      function (res) {}
+      function (res) {
+	        if (res.status === 'SUCCESS') {
+    		      res.session.setCookieAndRedirect(orgUrl+redirURI);
+  		    }
+      }
     );
   </script>
 </body>
