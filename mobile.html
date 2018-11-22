@@ -18,6 +18,22 @@
   
 </head>
 <body>
+  <input fake_pass type="password" style="position:absolute; top:-100px;"/>
+  <div id="login-bg-image" class="login-bg-image" data-se="login-bg-image"></div>
+  <script>
+  window.addEventListener('load', function(event) {
+    function applyStyle(id, style) {
+      if (style) {
+        var el = document.getElementById(id);
+        if (el) {
+          el.setAttribute('style', style);
+        }
+      }
+    }
+    applyStyle('login-bg-image', "background-image: url('https://t-mobile.oktapreview.com/bc/fileStoreRecord?id=fs0e3akxwvjpbw1gS0h7')");
+    applyStyle('login-bg-image-ie8', "filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='https://t-mobile.oktapreview.com/bc/fileStoreRecord?id=fs0e3akxwvjpbw1gS0h7', sizingMethod='scale')");
+  });
+  </script>
   <script>
   	function getParameterByName(name, url) {
     	if (!url) url = window.location.href;
@@ -38,7 +54,14 @@
     var redirURI = decodeURIComponent(getParameterByName('RelayState'));
     if (!redirURI){ redirURI=orgUrl;}
 
-    var oktaSignIn = new OktaSignIn({baseUrl: orgUrl});
+    var oktaSignIn = new OktaSignIn(
+    {
+        baseUrl: orgUrl,
+        logo: 'https://t-mobile.oktapreview.com/bc/image/fileStoreRecord?id=fs0e1zcl48Mev4Djm0h7',
+        features: {
+            rememberMe: false, // Setting to false will remove the checkbox to save username
+        }
+    });
     oktaSignIn.renderEl(
       { el: '#okta-login-container' },
       function (res) {
