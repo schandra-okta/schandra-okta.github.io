@@ -24,7 +24,7 @@
   <!-- Script to init the widget -->
   <script>
     var orgUrl = 'https://t-mobile.oktapreview.com';
-var oktaSignIn = new OktaSignIn();
+var oktaSignIn = new OktaSignIn({baseUrl: orgUrl});
     oktaSignIn.renderEl(
       { el: '#okta-login-container' },
       function (res) {}
