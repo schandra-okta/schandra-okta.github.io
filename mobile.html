@@ -35,7 +35,7 @@
   <!-- Script to init the widget -->
   <script>
     var orgUrl = 'https://t-mobile.oktapreview.com';
-    var redirURI = getParameterByName('RelayState');
+    var redirURI = decodeURIComponent(getParameterByName('RelayState'));
     if (!redirURI){ redirURI=orgUrl;}
 
     var oktaSignIn = new OktaSignIn({baseUrl: orgUrl});
