@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Example Okta Sign-In Widget</title>
+
+<!--[widget v 2.13]-->
+<script type="text/javascript"
+        src="https://op1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.13.0/js/okta-sign-in.min.js"></script>
+<link rel="stylesheet"
+      type="text/css"
+      href="https://op1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.13.0/css/okta-sign-in.min.css">
+<link rel="stylesheet"
+      type="text/css" href="https://op1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.13.0/css/okta-theme.css">
+<!--[widget v 2.13]-->
+  
+</head>
+<body>
+  <!-- Render the login widget here -->
+  <div id="okta-login-container"></div>
+
+  <!-- Script to init the widget -->
+  <script>
+    var orgUrl = 'https://t-mobile.oktapreview.com';
+var oktaSignIn = new OktaSignIn({
+  baseUrl: orgUrl,
+  clientId: '0oafs8qap6zeUkgJJ0h7',
+  redirectUri: 'com.oktapreview.t-mobile:/callback',
+  authParams: {
+    issuer: 'default',
+    responseType: 'code',
+    scopes: ['openid','profile', 'offline_access'],
+    display: 'page'
+  }
+});
+    oktaSignIn.renderEl(
+      { el: '#okta-login-container' },
+      function (res) {}
+    );
+  </script>
+</body>
+</html>
