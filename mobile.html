@@ -52,7 +52,7 @@
   <script>
     var orgUrl = 'https://t-mobile.oktapreview.com';
     var redirURI = decodeURIComponent(getParameterByName('RelayState'));
-    if (!redirURI){ redirURI=orgUrl;}
+    if (redirURI == 'null'){ redirURI='';}
 
     var oktaSignIn = new OktaSignIn(
     {
