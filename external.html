@@ -30,8 +30,8 @@
         }
       }
     }
-    applyStyle('login-bg-image', "background-image: url('https://t-mobile.oktapreview.com/bc/fileStoreRecord?id=fs0e3akxwvjpbw1gS0h7')");
-    applyStyle('login-bg-image-ie8', "filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='https://t-mobile.oktapreview.com/bc/fileStoreRecord?id=fs0e3akxwvjpbw1gS0h7', sizingMethod='scale')");
+    applyStyle('login-bg-image', "background-image: url('https://op1static.oktacdn.com/bc/image/fileStoreRecord?id=fs0ixa09uuoyRSF7B0h7')");
+    applyStyle('login-bg-image-ie8', "filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='https://op1static.oktacdn.com/bc/image/fileStoreRecord?id=fs0ixa09uuoyRSF7B0h7', sizingMethod='scale')");
   });
   </script>
   <script>
@@ -52,23 +52,37 @@
   <script>
     var orgUrl = 'https://t-mobile.oktapreview.com';
     var redirURI = decodeURIComponent(getParameterByName('RelayState'));
-    if (!redirURI){ redirURI=orgUrl;}
+    if (redirURI == 'null'){ redirURI='';}
     var oktaSignIn = new OktaSignIn(
     {
         baseUrl: orgUrl,
-        logo: 'https://op1static.oktacdn.com/bc/image/fileStoreRecord?id=fs0ixa09uuoyRSF7B0h7',
+        logo: 'https://t-mobile.oktapreview.com/bc/image/fileStoreRecord?id=fs0e1zcl48Mev4Djm0h7',
         helpSupportNumber: '(123) 456-7890',
         language: 'en',
         i18n: {
           en: {
-            'primaryauth.title': 'Sign in to Acme'
-          }
+	        'primaryauth.title': 'Sign In',             // Changes the sign in text
+	        'primaryauth.submit': 'Sign In',            // Changes the sign in button
+      		'primaryauth.username.placeholder': 'Enter your T-Mobile username',
+      		'primaryauth.password.placeholder': 'Enter your T-Mobile password',
+      		'needhelp': 'Additional Options'
+      		// Full list here: https://github.com/okta/okta-signin-widget/blob/master/packages/@okta/i18n/dist/properties/login.properties
+         }
         },
         helpLinks: {
-          help: 'https://acme.com/help'
-        }
+          help: 'https://www.example.com/help',
+   		  forgotPassword: 'https://www.example.com/forgot-password',
+  		  custom: [
+    		{
+      			text: 'Sign up',
+      			href: 'https://www.example.com/sign-up',
+       			target: '_blank'
+    		}
+  		  ]
+  		},
         features: {
             rememberMe: false, // Setting to false will remove the checkbox to save username
+            showPasswordToggleOnSignInPage: true
         }
     });
     oktaSignIn.renderEl(
