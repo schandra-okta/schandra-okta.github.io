@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sign In</title>
 
-<!--[widget v 2.15]-->
+<!--[widget v 2.13]-->
 <script type="text/javascript"
         src="https://op1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.15.0/js/okta-sign-in.min.js"></script>
 <link rel="stylesheet"
@@ -14,8 +14,28 @@
       href="https://op1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.15.0/css/okta-sign-in.min.css">
 <link rel="stylesheet"
       type="text/css" href="https://op1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.15.0/css/okta-theme.css">
-<!--[widget v 2.15]-->
-  
+<!--[widget v 2.13]-->
+<style>
+#okta-sign-in.auth-container .button-primary {
+    color: #fff;
+    background-color: #ea0a8e;
+    background: linear-gradient(#ea0a8e, #ea0a8e);
+    border-color: #ea0a8e;
+}
+#okta-sign-in.auth-container .button-primary:hover, #okta-sign-in.auth-container .button-primary:active, #okta-sign-in.auth-container .button-primary:focus {
+  background-color: #f73aa9;
+    background: linear-gradient(#f73aa9, #f73aa9);
+    border-color: #f73aa9;
+}
+#okta-sign-in .js-help-links {
+    font-weight: bold;
+    font-size: 15px;
+    color: #ea0a8e;
+}
+#okta-sign-in .auth-footer li {
+    display: none;
+}
+</style>  
 </head>
 <body>
   <input fake_pass type="password" style="position:absolute; top:-100px;"/>
@@ -48,6 +68,7 @@
   <!-- Render the login widget here -->
   <div id="okta-login-container"></div>
 
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <!-- Script to init the widget -->
   <script>
     var orgUrl = 'https://t-mobile.oktapreview.com';
@@ -66,22 +87,12 @@
       		'primaryauth.username.placeholder': 'E-mail Address',
       		'primaryauth.username.tooltip': ' ',
       		'primaryauth.password.placeholder': 'Password',
-      		'needhelp': 'More Options'
       		// Full list here: https://github.com/okta/okta-signin-widget/blob/master/packages/@okta/i18n/dist/properties/login.properties
          }
         },
-        helpLinks: {
-          help: 'https://www.example.com/help',
-   	  forgotPassword: 'https://www.example.com/forgot-password',
-  	  custom: [
-    	    {
-      	      text: 'Sign up',
-      	      href: 'https://tmobilebusinesstmfbpp.impartner.org/English/Onboarding/Account'
-            }
-          ]
-  	},
         features: {
             rememberMe: true, // Setting to false will remove the checkbox to save username
+   			callRecovery:true,
             showPasswordToggleOnSignInPage: true
         }
     });
@@ -93,6 +104,12 @@
   		    }
       }
     );
+      oktaSignIn.on('pageRendered', function (data) {
+         $(".js-help").remove(); $(".js-forgot-password").remove(); $(".js-help-link").remove(); $(".js-help-links").show();
+         $('.js-help-links').prepend('<a href="https://tmobilebusinesstmfbpp.impartner.org/English/register_email.aspx" style="color:#ea0a8e;">Apply Now</a>');
+         $('.js-help-links').append('<a href="https://www.example.com/forgot-password" style="color:#ea0a8e;text-align:right;float:right;">Forgot password?</a>');
+      });
+
   </script>
 </body>
 </html>
