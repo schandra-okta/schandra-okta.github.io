@@ -17,15 +17,10 @@
 <!--[widget v 2.13]-->
 <style>
 #okta-sign-in.auth-container .button-primary {
-    color: #fff;
-    background-color: #ea0a8e;
-    background: linear-gradient(#ea0a8e, #ea0a8e);
-    border-color: #ea0a8e;
-}
-#okta-sign-in.auth-container .button-primary:hover, #okta-sign-in.auth-container .button-primary:active, #okta-sign-in.auth-container .button-primary:focus {
-  background-color: #f73aa9;
-    background: linear-gradient(#f73aa9, #f73aa9);
-    border-color: #f73aa9;
+    color: #fff !important;
+    background-color: #ea0a8e !important;
+    background: linear-gradient(#ea0a8e, #ea0a8e) !important;
+    border-color: #ea0a8e !important;
 }
 #okta-sign-in .js-help-links {
     font-weight: bold;
@@ -105,9 +100,9 @@
       }
     );
       oktaSignIn.on('pageRendered', function (data) {
-         $(".js-help").remove(); $(".js-forgot-password").remove(); $(".js-help-link").remove(); $(".js-help-links").show();
          $('.js-help-links').prepend('<a href="https://tmobilebusinesstmfbpp.impartner.org/English/register_email.aspx" style="color:#ea0a8e;">Apply Now</a>');
-         $('.js-help-links').append('<a href="https://www.example.com/forgot-password" style="color:#ea0a8e;text-align:right;float:right;">Forgot password?</a>');
+         $('.js-help-links').prepend('<a href="https://www.example.com/forgot-password" style="color:#ea0a8e;text-align:right;float:right;">Forgot password?</a>');
+         $(".js-help").remove(); $(".js-forgot-password").remove(); $(".js-help-link").remove(); $(".js-help-links").show();
       });
 
   </script>
