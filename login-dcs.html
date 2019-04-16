@@ -8,12 +8,12 @@
 
 <!--[widget v 2.13]-->
 <script type="text/javascript"
-        src="https://op1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.13.0/js/okta-sign-in.min.js"></script>
+        src="https://op1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.15.0/js/okta-sign-in.min.js"></script>
 <link rel="stylesheet"
       type="text/css"
-      href="https://op1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.13.0/css/okta-sign-in.min.css">
+      href="https://op1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.15.0/css/okta-sign-in.min.css">
 <link rel="stylesheet"
-      type="text/css" href="https://op1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.13.0/css/okta-theme.css">
+      type="text/css" href="https://op1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.15.0/css/okta-theme.css">
 <!--[widget v 2.13]-->
   
 </head>
@@ -30,8 +30,8 @@
         }
       }
     }
-    applyStyle('login-bg-image', "background-image: url('https://t-mobile.oktapreview.com/bc/fileStoreRecord?id=fs0e3akxwvjpbw1gS0h7')");
-    applyStyle('login-bg-image-ie8', "filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='https://t-mobile.oktapreview.com/bc/fileStoreRecord?id=fs0e3akxwvjpbw1gS0h7', sizingMethod='scale')");
+    applyStyle('login-bg-image', "background-image: url('./t-mo_backgnd.jpg')");
+    applyStyle('login-bg-image-ie8', "filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./t-mo_backgnd.jpg', sizingMethod='scale')");
   });
   </script>
   <script>
@@ -56,32 +56,24 @@
     var oktaSignIn = new OktaSignIn(
     {
         baseUrl: orgUrl,
-        logo: 'https://t-mobile.oktapreview.com/bc/image/fileStoreRecord?id=fs0e1zcl48Mev4Djm0h7',
-        helpSupportNumber: '(123) 456-7890',
+        logo: './T-Mo.png',
         language: 'en',
         i18n: {
           en: {
-	        'primaryauth.title': 'Sign In',             // Changes the sign in text
+	        'primaryauth.title': 'Sign In with your login credentials',             // Changes the sign in text
 	        'primaryauth.submit': 'Sign In',            // Changes the sign in button
-      		'primaryauth.username.placeholder': 'Enter your T-Mobile username',
-      		'primaryauth.password.placeholder': 'Enter your T-Mobile password',
-      		'needhelp': 'Additional Options'
+      		'primaryauth.username.placeholder': 'Username',
+      		'primaryauth.password.placeholder': 'Password',
+      		'needhelp': 'More Options'
       		// Full list here: https://github.com/okta/okta-signin-widget/blob/master/packages/@okta/i18n/dist/properties/login.properties
          }
         },
         helpLinks: {
           help: 'https://www.example.com/help',
-   		  forgotPassword: 'https://www.example.com/forgot-password',
-  		  custom: [
-    		{
-      			text: 'Sign up',
-      			href: 'https://www.example.com/sign-up',
-       			target: '_blank'
-    		}
-  		  ]
+   		  forgotPassword: 'https://www.example.com/forgot-password'
   		},
         features: {
-            rememberMe: false, // Setting to false will remove the checkbox to save username
+            rememberMe: true, // Setting to false will remove the checkbox to save username
             showPasswordToggleOnSignInPage: true
         }
     });
